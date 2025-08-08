@@ -15,18 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - name: Change Ownership of .git Directory
-        run: |
-          sudo chown -R $USER:$USER .git/
-          
       - uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
           persist-credentials: false
-
-      - name: Disable CI  
-        run:  echo "CI=false" >> $GITHUB_ENV
           
       - name: Build And Deploy
         id: builddeploy
@@ -54,6 +47,7 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WITTY_MOSS_051BAB703 }}
           action: "close"
+
 
 
 
